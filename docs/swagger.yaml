@@ -1,0 +1,59 @@
+basePath: /api/v1
+definitions:
+  Document.DocumentRequest:
+    properties:
+      record_id:
+        example: 30
+        format: int
+        type: integer
+      url_template:
+        example: https://sycret.ru/service/apigendoc/forma_025u.doc
+        type: string
+    type: object
+  httputil.HTTPError:
+    properties:
+      code:
+        example: 400
+        type: integer
+      message:
+        example: status bad request
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This is a SycretTest Test.
+  title: Swagger Example API
+  version: "1.0"
+paths:
+  /Documents:
+    post:
+      consumes:
+      - application/json
+      description: Return Created documentUrl
+      parameters:
+      - description: Get Document
+        in: body
+        name: doc
+        required: true
+        schema:
+          $ref: '#/definitions/Document.DocumentRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+      summary: GetFinalDocument
+      tags:
+      - Documents
+swagger: "2.0"

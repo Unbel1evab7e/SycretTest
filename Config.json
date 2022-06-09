@@ -1,0 +1,8 @@
+{
+  "service": {
+    "url": "https://sycret.ru/service/apigendoc/apigendoc"
+  },
+  "api": {
+    "port": ":8080"
+  }
+}
